@@ -59,6 +59,11 @@ var inputs = {
   , expected: createFBO(gl, [512, 512])
 }
 
+// After FBO creation
+if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) {
+    console.error('Framebuffer incomplete');
+}
+
 function createLoop(key) {
   return function render(fbo) {
     outputs[key].shape = [canvas.height, canvas.width]
